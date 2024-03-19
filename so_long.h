@@ -3,6 +3,7 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
+#  define SIGN 3
 # endif
 
 typedef struct s_check_in {
@@ -62,8 +63,9 @@ char      	*ft_strtrim(char const *s1, char *set);
 char      	**ft_store_map(int fd);
 int       	contour(char **ptr);
 int       	check_PEC(char **ptr);
+int	          check_path(char **map, t_texture s);
 char      	**valide_map(int fd);
-// char  		**ft_flood_fill(char **ptr, int y, int x);
+void           ft_flood_fill(char **ptr, int y, int x);
 t_texture      position(t_texture t);
 t_texture      setup_window(t_texture t);
 t_texture      ft_put_imgs_to_window(char **ptr, t_texture t);
@@ -76,5 +78,6 @@ t_texture      move_down(t_texture *t);
 t_texture      move_right(t_texture *t);
 t_texture      move_left(t_texture *t);
 t_texture      c_count(t_texture t);
+t_texture      search(char **map, char c);
 
 #endif

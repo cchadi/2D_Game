@@ -12,7 +12,7 @@ t_texture      ft_initialisation(t_texture t)
 
 int  manage_event(int key, t_texture *t)
 {
-     if (key == 53 || key == 49)
+     if (key == 53)
           ft_exit(t);
      else if (key == 126 || key == 13)
           move_up(t);

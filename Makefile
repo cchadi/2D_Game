@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -Imlx
+CFLAGS = -Wall -Wextra -Werror -Imlx -fsanitize=address
 
 NAME = solong
 
@@ -16,8 +16,8 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME):$(OBJS)
-	$(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
- 
+	$(CC) $(OBJS) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
 clean : 
 	rm -f $(OBJS)
 

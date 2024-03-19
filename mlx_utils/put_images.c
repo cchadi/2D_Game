@@ -42,13 +42,14 @@ t_texture      ft_put_imgs_to_window(char **ptr, t_texture t)
      int i;
 
      l = 0;
+  
      while (ptr[l])
      {
           i = 0;
           while (ptr[l][i])
           {
-               if (ptr[l][i] == '0')
-                   img_to_win(t, t.space_path, i, l);
+               if (ptr[l][i] == '0' )
+                    img_to_win(t, t.space_path, i, l);
                else if (ptr[l][i] =='1')
                     img_to_win(t, t.wall_path, i, l);
                else if (ptr[l][i] =='C')
