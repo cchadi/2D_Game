@@ -3,7 +3,6 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
-#  define SIGN 3
 # endif
 
 typedef struct s_check_in {
@@ -61,6 +60,7 @@ int            ft_strncmp(char *s1, char *s2, size_t n);
 char 		**ft_split(char const *s, char c);
 char      	*ft_strtrim(char const *s1, char *set);
 char      	**ft_store_map(int fd);
+char           **make_copy(char **ptr);
 int       	contour(char **ptr);
 int       	check_PEC(char **ptr);
 int	          check_path(char **map, t_texture s);

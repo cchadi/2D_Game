@@ -34,8 +34,6 @@ t_texture      img_with_background(t_texture t, char *path, int i, int l)
      return (t);
 }
 
-
-
 t_texture      ft_put_imgs_to_window(char **ptr, t_texture t)
 {
      int l;

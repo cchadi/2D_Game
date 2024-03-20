@@ -40,10 +40,9 @@ t_texture      c_count(t_texture t)
 
 void     ft_flood_fill(char **ptr, int y, int x)
 {
-     if (ptr[y][x] == '1' || ptr[y][x] == 'E')
+     if (ptr[y][x] == '1' || ptr[y][x] == 'E' || ptr[y][x] == 'X')
           return;
-     if (ptr[y][x] != 'P')
-          ptr[y][x] = 'X';
+     ptr[y][x] = 'X';
      ft_flood_fill(ptr, y+1, x);
      ft_flood_fill(ptr, y-1, x);
      ft_flood_fill(ptr, y, x+1);
@@ -53,9 +52,8 @@ void     ft_flood_fill(char **ptr, int y, int x)
 
 void     ft_flood_exit(char **ptr, int y, int x)
 {
-     if (ptr[y][x] == '1')
+     if (ptr[y][x] == '1' || ptr[y][x] == 'X')
           return;
-     // if (ptr[y][x] != '0' && ptr[y][x] != 'P')
      ptr[y][x] = 'X';
      ft_flood_exit(ptr, y+1, x);
      ft_flood_exit(ptr, y-1, x);
@@ -78,39 +76,25 @@ int  path(char **ptr, char c)
      return (1);
 }
 
-int	check_path(char **ptr, t_texture s)
+int	check_path(char **map, t_texture s)
 {
-     int l;
-     // int i;
      (void)s;
-   
+     char **ptr;
+
+     ptr = make_copy(map);
      ft_flood_fill(ptr, s.y, s.x);
-     l = 0;
-     while(ptr[l++])
+     if (path(ptr, 'C') == 0)
+          return (0);
+     free(ptr);
+     ptr = make_copy(map);
+     ft_flood_exit(ptr, s.y, s.x);
+     int l = 0;
+     while (ptr[l])
      {
           printf("%s\n", ptr[l]);
           l++;
      }
-     if (path(ptr, 'C') == 0)
-          return (0);
-     s = search(ptr, 'P');
-     ft_flood_exit(ptr, s.y, s.x);
      if (path(ptr, 'E') == 0)
-          return (0);
-     
-
-     // l = 0;
-     // while(ptr[l])
-     // {
-     //      i = 0;
-     //      while (ptr[l][i])
-     //      {
-     //           if (ptr[l][i] == 'X' && (l != s.y && i != s.x))
-     //                ptr[l][i] = 'C';
-     //           i++;         
-     //      }
-     //      l++;
-     // }
-     // ptr[s.y][s.x] = 'E';
+          return (0); 
      return (1);
 }

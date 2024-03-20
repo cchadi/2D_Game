@@ -20,3 +20,23 @@ char **ft_store_map(int fd)
      return (map_origin);
 }
 
+char **make_copy(char **ptr)
+{
+	int l;
+	char **map;
+
+	l = 0;
+	while (ptr[l])
+	{
+		l++;
+	}
+	map = malloc((l + 1) * sizeof(char *));
+	map[l] = NULL;
+	l = 0;
+	while(ptr[l])
+	{
+		map[l] = ft_strdup(ptr[l]);
+		l++;
+	}
+	return (map);
+}
