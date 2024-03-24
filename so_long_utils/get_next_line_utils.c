@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/20 22:04:06 by csaidi            #+#    #+#             */
+/*   Updated: 2024/03/21 20:46:12 by csaidi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
 size_t	ft_strlen(const char *s)
@@ -14,9 +26,9 @@ size_t	ft_strlen(const char *s)
 
 char	*ft_strdup(char *s1)
 {
+	char	*s2;
 	size_t	i;
 	size_t	len;
-	char	*s2;
 
 	if (!s1)
 		return (NULL);
@@ -57,7 +69,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[j])
 		str[i++] = s2[j++];
 	str[i] = '\0';
-	free (s1);
+	free(s1);
 	return (str);
 }
 
@@ -89,8 +101,8 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-	while ((unsigned char)s2[i] == (unsigned char)s1[i]
-		&& (unsigned char)s1[i] && (unsigned char)s2[i] && i + 1 < n)
+	while ((unsigned char)s2[i] == (unsigned char)s1[i] && (unsigned char)s1[i]
+		&& (unsigned char)s2[i] && i + 1 < n)
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

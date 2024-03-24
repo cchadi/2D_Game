@@ -1,81 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_PEC.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/20 22:04:30 by csaidi            #+#    #+#             */
+/*   Updated: 2024/03/20 22:08:53 by csaidi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
-int	check_P(char *ptr)
+int	check_p(char *ptr)
 {
-	int i;
-	int P;
+	int	i;
+	int	p;
 
 	i = 0;
-	P = 0;
+	p = 0;
 	if (ptr[i] == '\0')
 		return (0);
 	while (ptr[i] != '\0')
 	{
 		if (ptr[i] == 'P')
-			P += 1;
+			p += 1;
 		i++;
 	}
-	return (P);
+	return (p);
 }
 
-int	check_E(char *ptr)
+int	check_d(char *ptr)
 {
-	int i;
-	int E;
+	int	i;
+	int	e;
 
-	E = 0;
+	e = 0;
 	i = 0;
 	if (ptr[i] == '\0')
 		return (0);
 	while (ptr[i] != '\0')
 	{
 		if (ptr[i] == 'E')
-			E += 1;
+			e += 1;
 		i++;
 	}
-	return (E);
+	return (e);
 }
 
-int	check_C(char *ptr)
+int	check_c(char *ptr)
 {
-	int i;
-	int C;
+	int	i;
+	int	c;
 
 	i = 0;
-	C = 0;
+	c = 0;
 	if (ptr[i] == '\0')
 		return (0);
 	while (ptr[i] != '\0')
 	{
 		if (ptr[i] == 'C')
-			C += 1;
+			c += 1;
 		i++;
 	}
-	return (C);
+	return (c);
 }
 
-int	check_O(char *ptr)
+int	check_o(char *ptr)
 {
-	int i;
-	int O;
+	int	i;
+	int	o;
 
 	i = 0;
-	O = 0;
+	o = 0;
 	if (ptr[i] == '\0')
 		return (0);
 	while (ptr[i] != '\0')
 	{
-		if (ptr[i] != 'C' && ptr[i] != 'P' && ptr[i] != 'E' && ptr[i] != '1' && ptr[i] != '0')
-			O += 1;
+		if (ptr[i] != 'C' && ptr[i] != 'P' && ptr[i] != 'E' && ptr[i] != '1'
+			&& ptr[i] != '0')
+			o += 1;
 		i++;
 	}
-	return (O);
+	return (o);
 }
 
-int check_PEC(char **ptr)
+int	check_pec(char **ptr)
 {
-	int l;
-	t_check_in s;
+	int			l;
+	t_check_in	s;
 
 	s.other = 0;
 	s.player = 0;
@@ -84,13 +97,14 @@ int check_PEC(char **ptr)
 	l = 0;
 	while (ptr[l])
 	{
-		s.other += check_O(ptr[l]);
-		s.player += check_P(ptr[l]);
-		s.exit += check_E(ptr[l]);
-		s.collecteble += check_C(ptr[l]);
+		s.other += check_o(ptr[l]);
+		s.player += check_p(ptr[l]);
+		s.exit += check_d(ptr[l]);
+		s.collecteble += check_c(ptr[l]);
 		l++;
 	}
-	if (s.player > 1 || s.player == 0 || s.exit > 1 || s.exit == 0 || s.collecteble == 0 || s.other > 0)
+	if (s.player > 1 || s.player == 0 || s.exit > 1 || s.exit == 0
+		|| s.collecteble == 0 || s.other > 0)
 		return (0);
 	return (1);
 }
@@ -101,5 +115,5 @@ int check_PEC(char **ptr)
 // 	char **map = ft_store_map(fd);
 // 	int f = check_PEC(map);
 // 	printf("%d\n", f);
-	
+
 // }

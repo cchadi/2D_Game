@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/20 22:04:13 by csaidi            #+#    #+#             */
+/*   Updated: 2024/03/20 22:04:14 by csaidi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
 char	*returnline(char *buffer)
@@ -27,10 +39,10 @@ char	*returnline(char *buffer)
 
 char	*ft_readfile(int fd, char *buffer)
 {
-	char		*readline;
-	ssize_t		l;
+	char	*readline;
+	ssize_t	l;
 
-	readline = malloc((size_t)BUFFER_SIZE +1);
+	readline = malloc((size_t)BUFFER_SIZE + 1);
 	if (!readline)
 		return (NULL);
 	while (ft_strchr(buffer, '\n') == NULL)
@@ -53,21 +65,21 @@ char	*ft_readfile(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char		*buffer;
-	char			*swap;
-	char			*line;
+	static char	*buffer;
+	char		*swap;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = ft_readfile(fd, buffer);
 	if (!buffer || !buffer[0])
 	{
-		free (buffer);
+		free(buffer);
 		buffer = NULL;
 		return (NULL);
 	}
 	line = returnline(buffer);
 	swap = buffer;
 	buffer = ft_strdup(swap + ft_strlen(line));
-	return (free (swap), line);
+	return (free(swap), line);
 }
