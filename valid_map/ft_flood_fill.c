@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:11:03 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/20 22:12:43 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 08:19:13 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_flood_fill(char **ptr, int y, int x)
 
 void	ft_flood_exit(char **ptr, int y, int x)
 {
-	if (ptr[y][x] == '1' || ptr[y][x] == 'X')
+	if (ptr[y][x] == '1' || ptr[y][x] == 'F')
 		return ;
-	ptr[y][x] = 'X';
+	ptr[y][x] = 'F';
 	ft_flood_exit(ptr, y + 1, x);
 	ft_flood_exit(ptr, y - 1, x);
 	ft_flood_exit(ptr, y, x + 1);

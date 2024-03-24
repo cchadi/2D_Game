@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:04:17 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/21 20:47:00 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 07:58:40 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	**ft_alloc(char *s, char c, char **ptr)
 	return (ptr);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**ptr;
 	char	*s_trim;

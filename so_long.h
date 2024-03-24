@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:27:17 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/24 07:37:32 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:23:02 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char		*ft_substr(char *s, unsigned int start, size_t len);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strchr(char *s, int c);
 int			ft_strncmp(char *s1, char *s2, size_t n);
-char		**ft_split(char const *s, char c);
+char		**ft_split(char *s, char c);
 char		*ft_strtrim(char *s1, char *set);
 char		**ft_store_map(int fd);
 char		**make_copy(char **ptr);

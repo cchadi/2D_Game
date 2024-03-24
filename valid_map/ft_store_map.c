@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:04:37 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/22 19:35:47 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:26:05 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**ft_store_map(int fd)
 	char	*buffer;
 
 	buffer = NULL;
-	line = ft_strdup(get_next_line(fd));
+	line = get_next_line(fd);
 	if (line == NULL)
 	{
 		free(line);
@@ -28,13 +28,15 @@ char	**ft_store_map(int fd)
 	buffer = ft_strjoin(buffer, line);
 	while (line != NULL)
 	{
-		line = ft_strdup(get_next_line(fd));
+		free(line);
+		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
 		buffer = ft_strjoin(buffer, line);
 	}
 	free(line);
 	map_origin = ft_split(buffer, '\n');
+	free(buffer);
 	return (map_origin);
 }
 
@@ -49,7 +51,7 @@ char	**make_copy(char **ptr)
 		l++;
 	}
 	map = malloc((l + 1) * sizeof(char *));
-	if(!map)
+	if (!map)
 	{
 		free(map);
 		return (NULL);

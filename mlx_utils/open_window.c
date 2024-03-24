@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:02:50 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/24 07:41:36 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:14:47 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ t_texture	ft_initialisation(t_texture t)
 	return (t);
 }
 
-int	ft_close()
+int	ft_close(t_texture *t)
 {
+	mlx_destroy_window(t->mlx, t->window);
 	exit(0);
 }
 
@@ -59,7 +60,7 @@ t_texture	open_window(t_texture t)
 		exit(0);
 	t = setup_window(t);
 	t = ft_put_imgs_to_window(t.map, t);
-	mlx_hook(t.window, 17, 0, ft_close, NULL);
+	mlx_hook(t.window, 17, 0, ft_close, &t);
 	mlx_hook(t.window, 2, (1L << 0), manage_event, &t);
 	mlx_loop(t.mlx);
 	return (t);

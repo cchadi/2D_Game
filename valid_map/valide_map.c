@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:04:41 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/20 22:04:42 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:27:04 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ t_texture	search(char **map, char c)
 	return (t);
 }
 
+void	*ft_free(char **ptr)
+{
+	int	l;
+
+	l = 0;
+	while (ptr[l])
+	{
+		free(ptr[l]);
+		l++;
+	}
+	free(ptr);
+	return (0);
+}
+
 char	**valide_map(int fd)
 {
 	t_texture	s;
@@ -42,13 +56,13 @@ char	**valide_map(int fd)
 		return (NULL);
 	result = contour(ptr);
 	if (result == 0)
-		return (NULL);
+		return (ft_free(ptr));
 	result = check_pec(ptr);
 	if (result == 0)
-		return (NULL);
+		return (ft_free(ptr));
 	s = search(ptr, 'P');
 	result = check_path(ptr, s);
 	if (result == 0)
-		return (NULL);
+		return (ft_free(ptr));
 	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:04:27 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/22 19:31:29 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/24 14:24:28 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,20 @@ int	path(char **ptr, char c)
 	return (1);
 }
 
+int	free_ptr(char **ptr)
+{
+	int	l;
+
+	l = 0;
+	while (ptr[l])
+	{
+		free(ptr[l]);
+		l++;
+	}
+	free(ptr);
+	return (0);
+}
+
 int	check_path(char **map, t_texture s)
 {
 	char	**ptr;
@@ -72,17 +86,13 @@ int	check_path(char **map, t_texture s)
 	ft_flood_fill(ptr, s.y, s.x);
 	if (path(ptr, 'C') == 0)
 	{
-		free(ptr);
-		return (0);
+		return (free_ptr(ptr));
 	}
-	free(ptr);
-	ptr = make_copy(map);
 	ft_flood_exit(ptr, s.y, s.x);
 	if (path(ptr, 'E') == 0)
 	{
-		free(ptr);
-		return (0);
+		return (free_ptr(ptr));
 	}
-	free(ptr);
+	free_ptr(ptr);
 	return (1);
 }
