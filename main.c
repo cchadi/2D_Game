@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:04:52 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/24 12:36:52 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/28 18:09:32 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*check_extention(char *arg)
 int	main(int ac, char **av)
 {
 	t_texture	t;
-	char		*ext;
 	int			fd;
 
 	if (ac > 2)
@@ -41,10 +40,10 @@ int	main(int ac, char **av)
 		ft_printf("Error\n more than two parameter\n");
 		return (0);
 	}
-	ext = check_extention(av[1]);
-	if (!ext)
+	t.ext = check_extention(av[1]);
+	if (!t.ext)
 		return (0);
-	if (ft_strncmp(ext, ".ber", ft_strlen(".ber")) != 0)
+	if (ft_strncmp(t.ext, ".ber", ft_strlen(".ber")) != 0)
 	{
 		ft_printf("Error\nuse '.ber' as extention\n");
 		return (0);
@@ -56,5 +55,6 @@ int	main(int ac, char **av)
 		ft_printf("Error\nmap non valide\n");
 		return (0);
 	}
+	close(fd);
 	open_window(t);
 }

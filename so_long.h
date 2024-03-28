@@ -6,7 +6,7 @@
 /*   By: csaidi <csaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:27:17 by csaidi            #+#    #+#             */
-/*   Updated: 2024/03/24 12:23:02 by csaidi           ###   ########.fr       */
+/*   Updated: 2024/03/28 18:09:09 by csaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_texture
 	int		counter;
 	int		width;
 	int		height;
+	char	*ext;
 	void	*mlx;
 	void	*window;
 	void	*img;
